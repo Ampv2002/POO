@@ -31,6 +31,15 @@ class produto{
 		}
 };
 
+class troco{
+	private:
+		float ListaMoedas[8] = {2,1,0.5,0.20,0.10,0.05,0.02,0.01};
+		int arrSize = sizeof(ListaMoedas)/sizeof(ListaMoedas[0]);
+		int QtdMoedas[arrSize] = {5,5,5,5,5,5,5,5};
+		int RetornaMoedas[arrSize] = {0,0,0,0,0,0,0,0};
+	public:
+};
+
 void stock (int a){
 	int stock_inicial = 2;
 	float preco_introduzido;
@@ -44,6 +53,7 @@ void stock (int a){
 		cin >> preco_introduzido;
 		p[k].setpreco(preco_introduzido);
 	}
+	cout << "\t LISTA DE PRODUTOS";
 	for (int i = 1; i <= a; i++){
 		cout << "Nome do produto " << i << ": " << p[i].nome << "\n";
 		cout << "Preco do produto " << i << ": " << p[i].getpreco() << "\n";
@@ -52,9 +62,27 @@ void stock (int a){
 	}
 }
 
+void troco(float troco){
+	float ListaMoedas[8] = {2,1,0.5,0.20,0.10,0.05,0.02,0.01};
+	int arrSize = sizeof(ListaMoedas)/sizeof(ListaMoedas[0]);
+	int QtdMoedas[arrSize] = {5,5,5,5,5,5,5,5};
+	int RetornaMoedas[arrSize] = {0,0,0,0,0,0,0,0};
+	for (int i = 0; i < arrSize ; i++) {
+		if (QtdMoedas[i] > 0){
+			while (troco - ListaMoedas[i] >= 0){
+				troco = troco - ListaMoedas[i];
+				QtdMoedas[i] = QtdMoedas[i] - 1
+				RetornaMoedas[i] = RetornaMoedas[i] + 1
+	  		}
+		}
+	}
+}
+
 main(){
 	int qtd;
 	cout << "Insira a quantidade de produtos a inserir: ";
 	cin >> qtd;
 	stock(qtd);
+	
+	troco();
 }
